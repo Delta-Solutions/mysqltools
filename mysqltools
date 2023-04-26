@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+
+use DeltaSolutions\MysqlTools\MysqlCompareCommand;
+use DeltaSolutions\MysqlTools\MysqlBackupCommand;
+use DeltaSolutions\MysqlTools\ServerDeleteCommand;
+use DeltaSolutions\MysqlTools\ServerCreateCommand;
+use DeltaSolutions\MysqlTools\ServerInfoCommand;
+use DeltaSolutions\MysqlTools\MysqlToolsApplication;
+use DeltaSolutions\MysqlTools\ServerListCommand;
+use DeltaSolutions\MysqlTools\MysqlTunnelCommand;
+use DeltaSolutions\MysqlTools\StarCommand;
+use DeltaSolutions\MysqlTools\UpdateCommand;
+use Symfony\Component\Process\Process;
+
+if (file_exists(__DIR__ . '/../../autoload.php')) {
+    require __DIR__ . '/../../autoload.php';
+} else {
+    require __DIR__ . '/vendor/autoload.php';
+}
+
+/**
+ * Start the console application.
+ */
+$version = trim(array_values(array_filter(explode('   ', Process::fromShellCommandline('composer global info | grep mysqltools')->mustRun()->getOutput())))[1]);
+
+$app = new MysqlToolsApplication('<fg=green>mysqltools</> version', $version, get_defined_vars()['argv']);
+$app->add(new ServerCreateCommand());
+$app->add(new ServerInfoCommand());
+$app->add(new MysqlTunnelCommand());
+$app->add(new ServerListCommand());
+$app->add(new ServerDeleteCommand());
+$app->add(new MysqlCompareCommand());
+$app->add(new MysqlBackupCommand());
+$app->add(new StarCommand());
+$app->add(new UpdateCommand());
+$app->run();
