@@ -31,7 +31,8 @@ This command will compare the structure of two databases and output the differen
 
 ### Create an ssh tunnel from your local machine to a mysql server
 
-command to run: `mysql:tunnel`
+command to run: `mysql:tunnel`.  This command is handy if you want to connect your application over an ssh tunnel to your database server.  You can for example choose port 13306 to connect to your database ( over ssh ) and use this port in your connection config.  As if you would connect on localhost.
+Your (Laravel) application will be able to reach your server even if it's on another location requiring an ssh tunnel.
 
 ## Welcome
 
