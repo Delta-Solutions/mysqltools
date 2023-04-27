@@ -114,8 +114,11 @@ class DatabaseManager
     {
         // Create dir if not exists
         $homeDir = trim(Process::fromShellCommandline("cd ~ && pwd")->mustRun()->getOutput());
-        $dir = $homeDir . '/Downloads/'.$databasename.'_'.$type.'/';
-        mkdir($dir);
+        $dir     = $homeDir . '/Downloads/' . $databasename . '_' . $type . '/';
+        if (!file_exists($dir)) {
+            mkdir($dir);
+        }
+
 
         // Create file
         $homeDir  = trim(Process::fromShellCommandline("cd ~ && pwd")->mustRun()->getOutput());
@@ -123,7 +126,8 @@ class DatabaseManager
         $file = fopen($filename, "w") or die("Unable to open file!");
         fwrite($file, implode(";" . "\r\n", $changes));
         fclose($file);
-        render('<div class="ml-1">File stored to "' . $filename . '"</div>');
+        render('');
+        render('<div class="ml-1">'.(($type == 'comparison') ? 'Comparison result' : 'Database structure') .' stored to "' . $filename . '"</div>');
         render('');
     }
 
@@ -133,7 +137,10 @@ class DatabaseManager
     public function exportTables($databasename)
     {
         $homeDir = trim(Process::fromShellCommandline("cd ~ && pwd")->mustRun()->getOutput());
-        $dir = $homeDir . '/Downloads/'.$databasename.'_backup/';
+        $dir     = $homeDir . '/Downloads/' . $databasename . '_backup/data/';
+        if (!file_exists($dir)) {
+            mkdir($dir);
+        }
 
         $this->config['source']['dbname'] = $databasename;
         $schemaManager                    = $this->getSchemaManager('source', true);
@@ -141,7 +148,7 @@ class DatabaseManager
         foreach ($schemaManager->listTables() as $table) {
 
             render('<div class="ml-1">Storing data for table ' . $table->getName() . '</div>');
-            $filename = $dir . '/data/' . $table->getName() . '.csv';
+            $filename = $dir . $table->getName() . '.csv';
 
             $query  = "select * from {$table->getName()}";
             $result = $this->sourceConnection->executeQuery($query)->fetchAllAssociative();
