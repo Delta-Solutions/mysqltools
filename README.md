@@ -19,10 +19,12 @@ composer global require delta-solutions/mysqltools
 
 ## Usage
 
-### The home screen
+Once mysqltools is installed you can get an overview of all the commands by running the `mysqltools` command.  You will see this
+welcome screen.
+
+### The welcome screen
 
 ![Mysqltools home screen](brand/brand.png?raw=true "Mysqltools home screen")
-
 
 ### Backup a database
 
@@ -39,10 +41,6 @@ This command will compare the structure of two databases and output the differen
 command to run: `mysqltools mysql:tunnel` or `mt mt`.  This command is handy if you want to connect your application over an ssh tunnel to your database server.  You can for example choose port 13306 to connect to your database ( over ssh ) and use this port in your connection config.  As if you would connect on localhost.
 Your (Laravel) application will be able to reach your server even if it's on another location requiring an ssh tunnel.
 
-## Welcome
-
-Once mysqltools is installed you can get an overview of all the commands by running the `mysqltools` command.  You will see this
-welcome screen.
 
 
 
