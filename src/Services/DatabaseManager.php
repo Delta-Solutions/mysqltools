@@ -141,7 +141,7 @@ class DatabaseManager
         foreach ($schemaManager->listTables() as $table) {
 
             render('<div class="ml-1">Storing data for table ' . $table->getName() . '</div>');
-            $filename = $dir . '/' . $table->getName() . '.csv';
+            $filename = $dir . '/data/' . $table->getName() . '.csv';
 
             $query  = "select * from {$table->getName()}";
             $result = $this->sourceConnection->executeQuery($query)->fetchAllAssociative();

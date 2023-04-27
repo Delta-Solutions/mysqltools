@@ -3,7 +3,6 @@
 use DeltaSolutions\MysqlTools\Services\Configurator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Process\Process;
 use function Termwind\{ask, render};
@@ -53,6 +52,9 @@ class ServerCreateCommand extends BaseCommand
             $username = $keyfile = "";
         }
         $configurator->store($name, $host, $username, $keyfile);
+        $configurator->validateServer($name);
+
+        render("<span class='m-1'>Server with name {$name} is saved!</span>");
 
         return 0;
     }

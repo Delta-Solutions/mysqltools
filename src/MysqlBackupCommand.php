@@ -21,7 +21,7 @@ class MysqlBackupCommand extends BaseCommand
     {
         $this
             ->setName('mysql:backup')
-            ->setDescription('Get a structure backup from a database')
+            ->setDescription('Get a structure and data backup from a database')
             ->setAliases(['mb']);
     }
 
@@ -46,7 +46,6 @@ class MysqlBackupCommand extends BaseCommand
         }
 
         $source   = $this->getMysqlServer('source', $input, $output, $configurator, $choices, $helper);
-        $outputTo = $configurator->askFor($helper, $input, $output, [1 => 'screen', 2 => 'file'], 'Do you want to output the result to screen or to a file?');
         render('');
 
         $databaseManager = new DatabaseManager();
@@ -60,15 +59,7 @@ class MysqlBackupCommand extends BaseCommand
         $sourceDatabase = $helper->ask($input, $output, $question);
         $changes        = $databaseManager->getFullSchema($sourceDatabase);
 
-        if ($outputTo == "screen") {
-            foreach ($changes as $key => $change) {
-                $color = 'text-green-600';
-                render('<span class="ml-1 ' . $color . '">' . $change . ';</span>');
-            }
-        } else {
-            $databaseManager->saveToFile($changes,$sourceDatabase,'backup');
-        }
-
+        $databaseManager->saveToFile($changes, $sourceDatabase, 'backup');
         $databaseManager->exportTables($sourceDatabase);
 
         return 0;

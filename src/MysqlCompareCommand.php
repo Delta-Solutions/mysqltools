@@ -47,12 +47,11 @@ class MysqlCompareCommand extends BaseCommand
 
         $source = $this->getMysqlServer('source', $input, $output, $configurator, $choices, $helper);
         $target = $this->getMysqlServer('target', $input, $output, $configurator, $choices, $helper);
-        $outputTo = $configurator->askFor($helper, $input, $output, [1 => 'screen', 2 => 'file'], 'Do you want to output the result to screen or to a file?');
         render('');
 
         $databaseManager = new DatabaseManager();
-        $databaseManager->setConfigFor('source',$source);
-        $databaseManager->setConfigFor('target',$target);
+        $databaseManager->setConfigFor('source', $source);
+        $databaseManager->setConfigFor('target', $target);
 
         $sourceDatabases = $databaseManager->getDatabases('source');
         $targetDatabases = $databaseManager->getDatabases('target');
@@ -75,20 +74,8 @@ class MysqlCompareCommand extends BaseCommand
         render('<div class="mt-1 ml-1 bg-green-800 text-white">Here are the resulting structure differences</div>');
         render('');
 
-        if($outputTo == "screen"){
-        foreach ($changes as $key => $change) {
-            if (substr($change, 0, 4) == 'DROP') {
-                $color = 'text-red-600';
-            }elseif (substr($change, 0, 5) == 'ALTER') {
-                    $color = 'text-orange-600';
-            }else{
-                $color = 'text-green-600';
-            }
-            render('<span class="ml-1 '.$color.'">' . $change . ';</span>');
-        }
-        }else{
-            $databaseManager->saveToFile($changes,$targetDatabase);
-        }
+
+        $databaseManager->saveToFile($changes, $targetDatabase);
 
 
         return 0;

@@ -20,8 +20,6 @@ class Configurator
 
         $this->save($config);
 
-        render("<span class='m-1'>Server with name {$name} is saved!</span>");
-
     }
 
     public function getConfig()
@@ -69,38 +67,30 @@ class Configurator
         fclose($file);
     }
 
-    public function validateServer($servername, $type = "apache")
+    public function validateServer($servername)
     {
 
         $config       = $this->getConfig();
         $serverConfig = $config['servers'][$servername];
 
-        if ($type == "apache") {
-            if (!isset($serverConfig['rootpath'])) {
-                $serverConfig['rootpath'] = ask("<span class='ml-1 mr-1'>What is the root path of your server ( the place where your applications live ) ? </span>");
-            }
-            if (!isset($serverConfig['configPath'])) {
-                $serverConfig['configPath'] = ask("<span class='ml-1 mr-1'>What is the apache config path of your server ? </span>");
-            }
+
+        if (!isset($serverConfig['mysql_port'])) {
+            $serverConfig['mysql_port'] = ask("<span class='ml-1 mr-1'>What is the mysql port for your server ? </span>");
         }
-        if ($type == "mysql") {
-            if (!isset($serverConfig['mysql_port'])) {
-                $serverConfig['mysql_port'] = ask("<span class='ml-1 mr-1'>What is the mysql port for your server ? </span>");
-            }
-            if (!isset($serverConfig['mysql_user'])) {
-                $serverConfig['mysql_user'] = ask("<span class='ml-1 mr-1'>What is the mysql user for your server ? </span>");
-            }
-            if (!isset($serverConfig['mysql_password']) || $this->decrypt($serverConfig['mysql_password']) === false) {
-                if(isset($serverConfig['mysql_password'])){
-                    render("<span class='ml-1 mr-1 text-orange-400'>You might have given your mysql password earlier, but we re-ask so we can encrypt it 🔐 </span>");
-                }
-                $serverConfig['mysql_password'] = $this->encrypt(ask("<span class='ml-1 mr-1'>What is the mysql password for your server ? </span>") ?? "");
-            }
-            if (!isset($serverConfig['mysql_ssh'])) {
-                $question                  = ask(' Do you want to connect to this mysql server over ssh (y/n) ? ', ['y', 'n']);
-                $serverConfig['mysql_ssh'] = $question;
-            }
+        if (!isset($serverConfig['mysql_user'])) {
+            $serverConfig['mysql_user'] = ask("<span class='ml-1 mr-1'>What is the mysql user for your server ? </span>");
         }
+        if (!isset($serverConfig['mysql_password']) || $this->decrypt($serverConfig['mysql_password']) === false) {
+            if (isset($serverConfig['mysql_password'])) {
+                render("<span class='ml-1 mr-1 text-orange-400'>You might have given your mysql password earlier, but we re-ask so we can encrypt it 🔐 </span>");
+            }
+            $serverConfig['mysql_password'] = $this->encrypt(ask("<span class='ml-1 mr-1'>What is the mysql password for your server ? </span>") ?? "");
+        }
+        if (!isset($serverConfig['mysql_ssh'])) {
+            $question                  = ask(' Do you want to connect to this mysql server over ssh (y/n) ? ', ['y', 'n']);
+            $serverConfig['mysql_ssh'] = $question;
+        }
+
         $config['servers'][$servername] = $serverConfig;
         $this->save($config);
 
