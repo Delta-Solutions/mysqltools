@@ -66,7 +66,7 @@ class MysqlBackupCommand extends BaseCommand
                 render('<span class="ml-1 ' . $color . '">' . $change . ';</span>');
             }
         } else {
-            $databaseManager->saveToFile($changes,$sourceDatabase);
+            $databaseManager->saveToFile($changes,$sourceDatabase,'backup');
         }
 
         $databaseManager->exportTables($sourceDatabase);

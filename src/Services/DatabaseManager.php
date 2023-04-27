@@ -110,10 +110,16 @@ class DatabaseManager
         return $mysqlConfig;
     }
 
-    public function saveToFile(array $changes, string $databasename)
+    public function saveToFile(array $changes, string $databasename, string $type = "comparison")
     {
+        // Create dir if not exists
+        $homeDir = trim(Process::fromShellCommandline("cd ~ && pwd")->mustRun()->getOutput());
+        $dir = $homeDir . '/Downloads/'.$databasename.'_'.$type.'/';
+        mkdir($dir);
+
+        // Create file
         $homeDir  = trim(Process::fromShellCommandline("cd ~ && pwd")->mustRun()->getOutput());
-        $filename = $homeDir . '/Downloads/' . date('Y-m-d-His') . '-' . $databasename . '.sql';
+        $filename = $dir . date('Y-m-d-His') . '-' . $databasename . '.sql';
         $file = fopen($filename, "w") or die("Unable to open file!");
         fwrite($file, implode(";" . "\r\n", $changes));
         fclose($file);
@@ -127,8 +133,7 @@ class DatabaseManager
     public function exportTables($databasename)
     {
         $homeDir = trim(Process::fromShellCommandline("cd ~ && pwd")->mustRun()->getOutput());
-        $dir     = $homeDir . '/Downloads/' . date('Y-m-d-His') . '-' . $databasename . '-data';
-        mkdir($dir);
+        $dir = $homeDir . '/Downloads/'.$databasename.'_backup/';
 
         $this->config['source']['dbname'] = $databasename;
         $schemaManager                    = $this->getSchemaManager('source', true);
