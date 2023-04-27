@@ -1,4 +1,4 @@
-![mysqltools](https://banners.beyondco.de/mysqltools.png?theme=light&packageManager=composer+require&packageName=delta-solutions%2Fmysqltools&pattern=architect&style=style_1&description=Mysqltools+is+a+command+line+tool+to+compare+database+structures+and+backup+and+restore+them&md=1&showWatermark=0&fontSize=100px&images=database)
+![mysqltools](https://banners.beyondco.de/mysqltools.png?theme=light&packageManager=composer+require&packageName=delta-solutions%2Fmysqltools&pattern=architect&style=style_1&description=Mysqltools+is+a+command+line+tool+to+compare+database+structures+and+backup+and+restore+them&md=1&showWatermark=0&fontSize=40px&images=database)
 # Mysqltools
 
 
