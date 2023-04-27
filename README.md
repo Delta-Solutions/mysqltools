@@ -19,6 +19,11 @@ composer global require delta-solutions/mysqltools
 
 ## Usage
 
+### The home screen
+
+![Mysqltools home screen](brand/brand.png?raw=true "Mysqltools home screen")
+
+
 ### Backup a database
 
 command to run: `mysql:backup`
