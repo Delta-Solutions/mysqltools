@@ -1,11 +1,11 @@
-![mysqltools](https://banners.beyondco.de/mysqltools.png?theme=light&packageManager=composer+global+require&packageName=delta-solutions%2Fmysqltools&pattern=architect&style=style_1&description=Mysqltools+is+a+command+line+tool+to+compare+database+structures+and+backup+and+restore+them&md=1&showWatermark=0&fontSize=100px&images=database)
+![mysqltools](https://banners.beyondco.de/mysqltools.png?theme=light&packageManager=composer+global+require&packageName=delta-solutions%2Fmysqltools&pattern=architect&style=style_1&description=Mysqltools+is+a+command+line+tool+to+compare+database+structures+and+backup+them&md=1&showWatermark=0&fontSize=100px&images=database)
 # Mysqltools
 
 
 ![Downloads](https://img.shields.io/packagist/dt/delta-solutions/mysqltools.svg?style=flat-square)
 
 Mysqltools is a command line tool to help you manage your mysql databases.  You can use it 
-to compare databases, create database backups, and restore backups.
+to compare databases, create database backups.
 
 ## Requirements
 
