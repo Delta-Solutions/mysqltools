@@ -5,7 +5,7 @@
 ![Downloads](https://img.shields.io/packagist/dt/delta-solutions/mysqltools.svg?style=flat-square)
 
 Mysqltools is a command line tool to help you manage your mysql databases.  You can use it 
-to compare databases, create database backups.
+to compare databases structures and create database backups.
 
 ## Use case
 
