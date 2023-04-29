@@ -7,6 +7,10 @@
 Mysqltools is a command line tool to help you manage your mysql databases.  You can use it 
 to compare databases, create database backups.
 
+## Use case
+
+If you like to create your database in your favourite sql tool instead of with migrations it can be hard to keep your development database and live database structure in sync.  This tools solves that problem.  You can compare the structure of a source database against a target database en retreive the sql statements to make the structures in sync.
+
 ## Requirements
 
 Mysqltools is a command line tool tested on MacOs desktop and Linux servers.
