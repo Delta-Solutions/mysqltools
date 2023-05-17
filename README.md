@@ -4,16 +4,15 @@
 
 ![Downloads](https://img.shields.io/packagist/dt/delta-solutions/mysqltools.svg?style=flat-square)
 
-Mysqltools is a command line tool to help you manage your mysql databases.  You can use it 
-to compare databases structures and create database backups.
+Mysqltools is a versatile command-line tool designed to streamline the management of your MySQL databases. With its user-friendly interface and powerful features, this tool simplifies tasks such as comparing database structures and creating backups.
 
 ## Use case
 
-If you like to create your database in your favourite sql tool instead of with migrations it can be hard to keep your development database and live database structure in sync.  This tools solves that problem.  You can compare the structure of a source database against a target database en retreive the sql statements to make the structures in sync.
+Managing database structures can be challenging, especially when you prefer creating databases in your favorite SQL tool rather than using migrations. Mysqltools solves this problem by allowing you to compare the structure of a source database with a target database. You can easily retrieve SQL statements to synchronize the structures, ensuring consistency between your development and live databases.
 
 ## Requirements
 
-Mysqltools is a command line tool tested on MacOs desktop and Linux servers.
+Mysqltools is a command-line tool that has been extensively tested on both macOS desktops and Linux servers. Its compatibility with these platforms ensures a seamless experience, providing you with a reliable and efficient solution for your database management needs.
 
 ## Installation
 
@@ -33,19 +32,17 @@ welcome screen.
 ### Backup a database
 
 command to run: `mysqltools mysql:backup` or `mt mb`
-This command dumps the structure of your database to an sql file and stores the data from the database in .csv files.  Files are stored in your Downloads folder.
-
+This command dumps the structure of your database to an SQL file and stores the data from the database in .csv files. The resulting files are stored in your Downloads folder. If you only want to create a backup of the structure without the data, you can add the --nodata option.
 If you want to create a backup of only the structure you can add the --nodata option
 
 ### Compare two database structures
 
 command to run: `mysqltools mysql:compare` or `mt mc`
-This command will compare the structure of two databases and output the differences between your source and target database in a .sql file. The resulting file is stored in your Downloads folder.
+This command compares the structure of two databases and outputs the differences between the source and target databases in an SQL file. The resulting file is stored in your Downloads folder.
 
 ### Create an ssh tunnel from your local machine to a mysql server
 
-command to run: `mysqltools mysql:tunnel` or `mt mt`.  This command is handy if you want to connect your application over an ssh tunnel to your database server.  You can for example choose port 13306 to connect to your database ( over ssh ) and use this port in your connection config.  As if you would connect on localhost.
-Your (Laravel) application will be able to reach your server even if it's on another location requiring an ssh tunnel.
+command to run: `mysqltools mysql:tunnel` or `mt mt`.   This command sets up an SSH tunnel from your local machine to a MySQL server. It is useful when you want to connect your application over an SSH tunnel to your database server. By using this command, you can choose a specific port (e.g., 13306) to connect to your database over SSH. You can then configure your application to connect to the local port as if it were connecting to localhost. This allows your application to reach the database server even if it's located on another location that requires an SSH tunnel.
 
 
 
