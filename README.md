@@ -32,17 +32,21 @@ welcome screen.
 ### Backup a database
 
 command to run: `mysqltools mysql:backup` or `mt mb`
+
 This command dumps the structure of your database to an SQL file and stores the data from the database in .csv files. The resulting files are stored in your Downloads folder. If you only want to create a backup of the structure without the data, you can add the --nodata option.
 If you want to create a backup of only the structure you can add the --nodata option
 
 ### Compare two database structures
 
 command to run: `mysqltools mysql:compare` or `mt mc`
+
 This command compares the structure of two databases and outputs the differences between the source and target databases in an SQL file. The resulting file is stored in your Downloads folder.
 
 ### Create an ssh tunnel from your local machine to a mysql server
 
-command to run: `mysqltools mysql:tunnel` or `mt mt`.   This command sets up an SSH tunnel from your local machine to a MySQL server. It is useful when you want to connect your application over an SSH tunnel to your database server. By using this command, you can choose a specific port (e.g., 13306) to connect to your database over SSH. You can then configure your application to connect to the local port as if it were connecting to localhost. This allows your application to reach the database server even if it's located on another location that requires an SSH tunnel.
+command to run: `mysqltools mysql:tunnel` or `mt mt`
+
+This command sets up an SSH tunnel from your local machine to a MySQL server. It is useful when you want to connect your application over an SSH tunnel to your database server. By using this command, you can choose a specific port (e.g., 13306) to connect to your database over SSH. You can then configure your application to connect to the local port as if it were connecting to localhost. This allows your application to reach the database server even if it's located on another location that requires an SSH tunnel.
 
 
 
