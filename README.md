@@ -35,6 +35,8 @@ welcome screen.
 command to run: `mysqltools mysql:backup` or `mt mb`
 This command dumps the structure of your database to an sql file and stores the data from the database in .csv files.  Files are stored in your Downloads folder.
 
+If you want to create a backup of only the structure you can add the --nodata option
+
 ### Compare two database structures
 
 command to run: `mysqltools mysql:compare` or `mt mc`
