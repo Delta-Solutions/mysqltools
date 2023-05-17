@@ -4,6 +4,7 @@ use DeltaSolutions\MysqlTools\Services\Configurator;
 use DeltaSolutions\MysqlTools\Services\DatabaseManager;
 use DeltaSolutions\MysqlTools\Traits\HasServer;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use function Termwind\render;
@@ -21,7 +22,8 @@ class MysqlBackupCommand extends BaseCommand
     {
         $this
             ->setName('mysql:backup')
-            ->setDescription('Get a structure and data backup from a database')
+            ->setDescription('Get a structure and data backup from a database ( add option --nodata if you only want the structure )')
+            ->addOption('nodata', null, InputOption::VALUE_OPTIONAL, 'Only create a structure backup for this database',false)
             ->setAliases(['mb']);
     }
 
@@ -60,7 +62,10 @@ class MysqlBackupCommand extends BaseCommand
         $changes        = $databaseManager->getFullSchema($sourceDatabase);
 
         $databaseManager->saveToFile($changes, $sourceDatabase, 'backup');
-        $databaseManager->exportTables($sourceDatabase);
+
+        if($input->getOption('nodata') === false) {
+            $databaseManager->exportTables($sourceDatabase);
+        }
 
         return 0;
     }
