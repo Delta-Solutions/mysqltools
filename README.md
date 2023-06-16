@@ -1,7 +1,7 @@
 ![mysqltools](https://banners.beyondco.de/mysqltools.png?theme=light&packageManager=composer+global+require&packageName=delta-solutions%2Fmysqltools&pattern=architect&style=style_1&description=Mysqltools+is+a+command+line+tool+to+compare+database+structures+and+backup+them&md=1&showWatermark=0&fontSize=100px&images=database)
 # Mysqltools
 
-
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/delta-solutions/mysqltools.svg?style=flat-square)](https://packagist.org/packages/delta-solutions/mysqltools)
 ![Downloads](https://img.shields.io/packagist/dt/delta-solutions/mysqltools.svg?style=flat-square)
 
 Mysqltools is a versatile command-line tool designed to streamline the management of your MySQL databases. With its user-friendly interface and powerful features, this tool simplifies tasks such as comparing database structures and creating backups.
