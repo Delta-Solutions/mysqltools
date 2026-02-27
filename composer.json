@@ -3,11 +3,14 @@
     "description": "Mysqltools is a tool to manage your mysql databases",
     "type": "library",
     "license": "MIT",
-    "bin": ["mysqltools", "mt"],
+    "bin": [
+        "mysqltools",
+        "mt"
+    ],
     "require": {
-        "symfony/console": "^5.3",
-        "symfony/process": "^5.3",
-        "symfony/finder": "^5.3",
+        "symfony/console": "^5.3|^6.0|^7.0",
+        "symfony/process": "^5.3|^6.0|^7.0",
+        "symfony/finder": "^5.3|^6.0|^7.0",
         "nunomaduro/termwind": "^1.15",
         "spatie/ssh": "^1.8",
         "ext-json": "*",
