@@ -39,10 +39,10 @@ class Configurator
         if (isset($this->getConfig()['servers'])) {
             render('<div class="ml-1 mb-1">Here\'s a list of all saved servers.</div>');
 
-            collect($this->getConfig()['servers'])->each(function ($server) use (&$counter) {
+            foreach ($this->getConfig()['servers'] as $server) {
                 render("<span class='ml-1'>{$counter}. {$server['name']} ({$server['host']})</span>");
                 $counter++;
-            });
+            }
         }
         if ($counter == 1) {
             render('<div class="m-1">You have no saved servers, you can create one with the \'server:create\' command.</div>');

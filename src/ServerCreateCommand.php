@@ -65,12 +65,12 @@ class ServerCreateCommand extends BaseCommand
     private function getPossibleSshKeys(): array
     {
         $possibleKeys = Process::fromShellCommandline('ls ~/.ssh')->mustRun()->getOutput();
-        $possibleKeys = collect(explode("\n", $possibleKeys))->filter(function ($key) {
+        $keys = array_filter(explode("\n", $possibleKeys), function ($key) {
             return strstr($key, '.pub');
-        })->transform(function ($key) {
+        });
+        return array_values(array_map(function ($key) {
             return str_replace('.pub', '', $key);
-        })->toArray();
-        return array_values($possibleKeys);
+        }, $keys));
     }
 
 }

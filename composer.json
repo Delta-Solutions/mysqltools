@@ -1,36 +1,32 @@
 {
-  "name": "delta-solutions/mysqltools",
-  "description": "Mysqltools is a tool to manage your mysql databases",
-  "type": "library",
-  "license": "MIT",
-  "bin": [
-    "mysqltools","mt"
-  ],
-  "require": {
-    "illuminate/filesystem": "^8.61",
-    "illuminate/support": "^8.61",
-    "symfony/console": "^5.3",
-    "symfony/process": "^5.3",
-    "symfony/finder": "^5.3",
-    "nunomaduro/termwind": "^1.15",
-    "spatie/ssh": "^1.8",
-    "ext-json": "*",
-    "doctrine/dbal": "^3.6",
-    "ext-openssl": "*"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.1",
-    "symfony/var-dumper": "^5.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "DeltaSolutions\\MysqlTools\\": "src/"
-    }
-  },
-  "authors": [
-    {
-      "name": "Dieter Coopman",
-      "email": "dieter@deltasolutions.be"
-    }
-  ]
+    "name": "delta-solutions/mysqltools",
+    "description": "Mysqltools is a tool to manage your mysql databases",
+    "type": "library",
+    "license": "MIT",
+    "bin": ["mysqltools", "mt"],
+    "require": {
+        "symfony/console": "^5.3",
+        "symfony/process": "^5.3",
+        "symfony/finder": "^5.3",
+        "nunomaduro/termwind": "^1.15",
+        "spatie/ssh": "^1.8",
+        "ext-json": "*",
+        "doctrine/dbal": "^3.6",
+        "ext-openssl": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.1",
+        "symfony/var-dumper": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DeltaSolutions\\MysqlTools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dieter Coopman",
+            "email": "dieter@deltasolutions.be"
+        }
+    ]
 }
